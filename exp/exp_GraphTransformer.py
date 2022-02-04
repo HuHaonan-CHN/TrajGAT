@@ -41,7 +41,7 @@ class ExpGraphTransformer(ExpBasic):
         super(ExpGraphTransformer, self).__init__(config, gpu_id)
 
         if just_embeddings:  # 只进行embedding操作
-            self.qtree = build_qtree(pload(self.config["traj_path"]), self.config["max_nodes"], self.config["max_depth"])
+            self.qtree = build_qtree(pload(self.config["traj_path"]), self.config["x_range"], self.config["y_range"], self.config["max_nodes"], self.config["max_depth"])
             # 决定是否要进行 embedding预训练
             self.qtree_name2id, self.pre_embedding = get_pre_embedding(self.qtree, self.config["d_model"])
             self.embeding_loader = self._get_dataloader(flag="embed")
@@ -49,8 +49,8 @@ class ExpGraphTransformer(ExpBasic):
         else:
             self.log_writer = SummaryWriter(f"./runs/{self.config['data']}/{self.config['length']}/{self.config['model']}_{self.config['dis_type']}_{datetime.datetime.now()}/")
 
-            print("[!] Build qtree, max nodes:", self.config["max_nodes"], "max depth:", self.config["max_depth"])
-            self.qtree = build_qtree(pload(self.config["traj_path"]), self.config["max_nodes"], self.config["max_depth"])
+            print("[!] Build qtree, max nodes:", self.config["max_nodes"], "max depth:", self.config["max_depth"], "x_range:", self.config["x_range"], "y_range:", self.config["y_range"])
+            self.qtree = build_qtree(pload(self.config["traj_path"]), self.config["x_range"], self.config["y_range"], self.config["max_nodes"], self.config["max_depth"])
 
             # 进行embedding预训练
             self.qtree_name2id, self.pre_embedding = get_pre_embedding(self.qtree, self.config["d_model"])
