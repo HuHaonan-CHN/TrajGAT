@@ -25,12 +25,15 @@ def build_qtree(traj_data, x_range, y_range, max_items, max_depth):
 
 
 if __name__ == "__main__":
-    # traj_data = pload("/home/huhaonan/nfs/huhaonan/TrajectoryRepresentation/GraphTransformer/data/nor/porto_mix/val_mix_trajs_9958_all.pkl")  # Mix
+    # traj_data = pload("/home/huhaonan/nfs/huhaonan/Data/porto_back/nor/porto_long/val_long_trajs_10000_all.pkl")  # Mix
+    # # traj_data = pload("/home/huhaonan/nfs/huhaonan/Data/porto_back/nor/porto_mix/val_mix_trajs_9958_all.pkl")  # Mix
+    # qtree = build_qtree(traj_data, [-15.630759, -3.930948], [36.886104, 45.657225], max_items=50, max_depth=50)
 
     traj_data = pload("/home/huhaonan/nfs/huhaonan/Data/DiDi/mix/traj/mix_trajs_10000.pkl")  # Long
+    # traj_data = pload("/home/huhaonan/nfs/huhaonan/Data/DiDi/long/traj/long_trajs_10000.pkl")
 
-    # qtree = build_qtree(traj_data, max_items=500, max_depth=500)
-    qtree = build_qtree(traj_data, [108.91114, 108.9986], [34.2053, 34.28022], max_items=50, max_depth=50)
+    qtree = build_qtree(traj_data, [108.91114, 108.9986], [34.2053, 34.28022], max_items=50, max_depth=20)
+
 
     # print("The depth of Q-Tree:", qtree._depth)
     print(qtree.nodes)
