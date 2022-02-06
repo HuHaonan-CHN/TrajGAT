@@ -14,8 +14,6 @@ import torch
 from utils.pre_embedding.node2vec.src import node2vec
 from gensim.models import Word2Vec
 
-from utils.qtree import get_qtree_feat
-
 
 class Parameter:
     def __init__(self, d_model) -> None:

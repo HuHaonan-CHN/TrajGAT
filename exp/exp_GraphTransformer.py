@@ -80,15 +80,15 @@ class ExpGraphTransformer(ExpBasic):
             trajs = pload(self.config["traj_path"])[self.config["train_data_range"][0] : self.config["train_data_range"][1]]
             print("Train traj number:", len(trajs))
             matrix = pload(self.config["dis_matrix_path"])[self.config["train_data_range"][0] : self.config["train_data_range"][1], self.config["train_data_range"][0] : self.config["train_data_range"][1]]
-            print("Train matrix shape:", matrix.shape)
-            print(matrix[:5, :5])
+            # print("Train matrix shape:", matrix.shape)
+            # print(matrix[:5, :5])
         elif flag == "val":
             trajs = pload(self.config["traj_path"])
             print("Val traj number:", len(trajs))
             matrix = pload(self.config["dis_matrix_path"])[self.config["val_data_range"][0] : self.config["val_data_range"][1], :]
-            print("Val matrix shape:", matrix.shape)
-            print(matrix[:5, :5])
-            print(matrix[:, 6000:10000])
+            # print("Val matrix shape:", matrix.shape)
+            # print(matrix[:5, :5])
+            # print(matrix[:, 6000:10000])
 
         elif flag == "embed":
             trajs = pload(self.config["traj_path"])
