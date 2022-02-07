@@ -12,6 +12,7 @@ def get_pre_embedding(qtree, d_model):
     vir_id_edge_list, vir_id2center, word_embedding_name2id = get_qtree_feat(qtree)
 
     print("Edge number used in node2vec:", len(vir_id_edge_list))
+    print("Point number used in node2vec:", len(vir_id2center))
 
     vir_pre_embedding = node2vec_embed(vir_id_edge_list, d_model)
     vir_pre_embedding = torch.tensor(vir_pre_embedding, dtype=torch.float)

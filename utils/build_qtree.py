@@ -6,7 +6,7 @@ sys.path.append("/home/huhaonan/nfs/huhaonan/TrajectoryRepresentation/GraphTrans
 
 
 from utils.tools import pdump, pload
-from utils.qtree import Index
+from utils.qtree import Index, get_qtree_feat
 
 
 def build_qtree(traj_data, x_range, y_range, max_items, max_depth):
@@ -32,9 +32,16 @@ if __name__ == "__main__":
     # traj_data = pload("/home/huhaonan/nfs/huhaonan/Data/DiDi/mix/traj/mix_trajs_10000.pkl")
     traj_data = pload("/home/huhaonan/nfs/huhaonan/Data/DiDi/long/traj/long_trajs_10000.pkl")  # Long
 
-    qtree = build_qtree(traj_data, [108.91114, 108.9986], [34.2053, 34.28022], max_items=50, max_depth=20)
+    qtree = build_qtree(traj_data, [108.91114, 108.9986], [34.2053, 34.28022], max_items=80, max_depth=50)
 
     # print("The depth of Q-Tree:", qtree._depth)
+
+    vir_id_edge_list, vir_id2center, word_embedding_name2id = get_qtree_feat(qtree)
+
+    print("Edge number used in node2vec:", len(vir_id_edge_list))
+    print("Point number used in node2vec:", len(vir_id2center))
+
+    print("############")
     print(qtree.nodes)
     print(qtree.children)
     queue = collections.deque([qtree])
