@@ -10,9 +10,9 @@ Pytorch, Numpy, Yaml, Dgl, Networkx, Pickle, Scipy, Tensorboard, Tqdm, trajector
 ### Create Folders
 Please create 2 empty folders:
 
-*`data`: Path of the original data which is organized to a trajectory list. Each trajectory in it is a list of coordinate tuples (lon, lat).
+* `data`: Path of the original data which is organized to a trajectory list. Each trajectory in it is a list of coordinate tuples (lon, lat).
 
-*`model/wts`: It is used for placing the best TrajGAT model parameters of training.
+* `model/wts`: It is used for placing the best TrajGAT model parameters of training.
 
 ### Download Data
 Due to the file size limit, we put the dataset on other sites. Please first download the data and put it in `data` folder. The long trajectory dataset of Porto can be download at:  https://
