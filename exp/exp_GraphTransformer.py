@@ -187,7 +187,13 @@ class ExpGraphTransformer(ExpBasic):
             epoch_begin_time = time.time()
             epoch_loss = 0.0
 
+            dataload_time = 0
+            embed_time = 0
+            groupdata_time = 0
+            test_time = time.time()
             for trajgraph_l_l, dis_l in self.train_loader:
+                dataload_time += time.time() - test_time
+                test_time2 = time.time()
                 # trajgraph_l_l [B, SAM, graph]
                 # dis_l [B, SAM]
                 B = len(trajgraph_l_l)
@@ -198,7 +204,8 @@ class ExpGraphTransformer(ExpBasic):
                 for b in trajgraph_l_l:
                     traj_graph.extend(b)
                 batch_graphs = dgl.batch(traj_graph).to(self.device)  # (B*SAM, graph)
-
+                groupdata_time += time.time() - test_time2
+                test_time3 = time.time()
                 model_optim.zero_grad()
 
                 with torch.set_grad_enabled(True):
@@ -212,6 +219,12 @@ class ExpGraphTransformer(ExpBasic):
                 model_optim.step()
 
                 epoch_loss += loss.item()
+                embed_time += time.time() - test_time3
+                test_time = time.time()
+
+            print("\nLoad data time:", dataload_time // 60, "m")
+            print("Data group time:", groupdata_time // 60, "m")
+            print("Train model time:", embed_time // 60, "m\n")
 
             epoch_loss = epoch_loss / len(self.train_loader.dataset)
             self.log_writer.add_scalar(f"TrajRepresentation/Loss", float(epoch_loss), epoch)

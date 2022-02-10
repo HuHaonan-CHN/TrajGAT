@@ -15,7 +15,8 @@ class GraphTransformer(nn.Module):
 
         # embedding layer for each node
         if pre_embedding is not None:
-            self.embedding_id = nn.Embedding.from_pretrained(pre_embedding, freeze=False)
+            # self.embedding_id = nn.Embedding.from_pretrained(pre_embedding, freeze=False)
+            self.embedding_id = nn.Embedding.from_pretrained(pre_embedding)  # no word embedding update
 
             total_num = sum(p.numel() for p in self.embedding_id.parameters())
             trainable_num = sum(p.numel() for p in self.embedding_id.parameters() if p.requires_grad)

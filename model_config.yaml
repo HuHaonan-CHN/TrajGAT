@@ -1,0 +1,52 @@
+model: 'TrajGAT'
+data: 'Porto'
+dis_type: 'Hausdorff'
+length: 'long'
+optimizer: 'Adam'
+init_lr: 0.001
+
+
+
+seed: 2021
+max_nodes: 50
+max_depth: 50
+sample_num: 20
+alpha: 16
+train_data_range: [0, 6000]
+val_data_range: [6000, 10000]
+num_workers: 10
+
+train_batch_size: 2
+eval_batch_size: 200
+matrix_cal_batch: 100
+epoch: 100
+
+
+d_input: 4
+d_model: 32
+num_head: 8
+num_encoder_layers: 3
+encoder_dropout: 0.01
+in_feat_dropout: 0.0
+d_lap_pos: 8
+
+batch_norm: True
+layer_norm: False
+use_bias: False
+
+
+weight_decay: 0.0
+lr_reduce_factor: 0.5
+lr_schedule_patience: 10
+
+
+traj_path: 'data/trajs_10000.pkl'
+dis_matrix_path: 'data/dis_matrix_10000x10000.pkl'
+
+
+model_best_wts_path: 'model/wts/{}_{}_{}_{}_wts_hr10 {:.4f}.pkl'
+
+
+data_features: [-8.616178175552571, 0.05779256281472269, 41.1594322983062, 0.07500122113317888]
+x_range: [-15.630759, -3.930948]
+y_range: [36.886104, 45.657225]

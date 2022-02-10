@@ -3,6 +3,8 @@
 .idea
 *.pkl
 *.ipynb
+*.out
+data/
 runs/
 outs/
 config/

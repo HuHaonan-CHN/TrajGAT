@@ -15,11 +15,11 @@ Please create 2 empty folders:
 * `model/wts`: It is used for placing the best TrajGAT model parameters of training.
 
 ### Download Data
-Due to the file size limit, we put the dataset on other sites. Please first download the data and put it in `data` folder. The long trajectory dataset of Porto can be download at:  https://
+Due to the file size limit, we put the dataset on other sites. Please first download the data and put it in `data` folder. The long trajectory dataset of Porto can be download at:  https://drive.google.com/drive/folders/1hORrqGXXPZWiQXKVzAj0EFU6CYgIgeHd?usp=sharing
 
 ### Training & Evaluating
 To train TrajGAT model, run the following command:
 ```bash
 python main.py --config=model_config.yaml --gpu=0
 ```
-It trains TrajGAT under the supervision of metric distance. The parameters of TrajGAT can be modified in model_config.yaml
+It trains TrajGAT under the supervision of metric distance. The parameters of TrajGAT can be modified in `model_config.yaml`.
